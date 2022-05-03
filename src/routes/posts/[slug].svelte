@@ -1,28 +1,22 @@
 <script context="module">
     export async function load({ params }) {
-        const Hello = (await import(`../../posts/${params.slug}.md`)).default;
-        const post = {
-            // slug comes directly from the file title
-            // title: params.slug,
-            // date: new Date(),
-            // body: "lorem ipsum",
-        };
+        const Hello = (await import(`../../posts/${params.slug}.md`));
+        // console.log('Hello', Hello);
+
         return {
             props: {
-                Hello,
-                // post
+                Hello: Hello.default,
+                title: Hello.metadata.title // figured out how to find this via console log
             }
         }
     }
 </script>
 
 <script>
-    // import Hello from '../../posts/hello.md';
-    // export let post;
     export let Hello;
+    export let title;
 </script>
 
-<!-- <Hello /> -->
-<svelte:component this={Hello}/> <!-- copied from cmd -->
+<h2>{title}</h2>
 
-<!-- <h3>{post.title}</h3> -->
+<svelte:component this={Hello}/> <!-- copied from cmd -->
