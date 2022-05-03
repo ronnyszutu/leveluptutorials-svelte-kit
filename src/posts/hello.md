@@ -1,10 +1,9 @@
 ---
-title: Go Leafs Go
+title: Hello World
+slug: Hello
 ---
 
 # {title}
-
-### Hello World!!!!
 
 lorem ipsum
 
